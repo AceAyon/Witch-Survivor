@@ -1,0 +1,29 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+
+public class playerMovement : MonoBehaviour
+{
+
+    public float speed = 5.0f;
+    private Rigidbody2D rb;
+    private Vector2 movement;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        rb.linearVelocity = movement * speed;
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        movement = context.ReadValue<Vector2>();
+    }
+}
+    
